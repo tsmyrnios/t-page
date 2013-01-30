@@ -57,6 +57,10 @@ You can simply pass the Model used by the view as an argument to the action and 
             return View(model);
         }
     }
+    
+###Future
+
+A Nuget package is in the works for this... for now, just copy in the code.
 
 ###Tribute
 
