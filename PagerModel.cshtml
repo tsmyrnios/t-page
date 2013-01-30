@@ -1,0 +1,25 @@
+@model Shared.PagerModel
+@Html.HiddenFor(m => m.PageIndex, new { @class = "page-index" })
+@Html.HiddenFor(m => m.PageSize, new { @class = "page-size" })
+@Html.HiddenFor(m => m.TotalRowCount, new { @class = "total-row-count" })
+@Html.HiddenFor(m => m.PageGroupSize, new { @class = "page-group-size" })
+
+<input type="submit" name="Page" value="Page" style="display:none;" class="pager-submit-button" />
+
+@if(!Model.IsFirstPage && Model.PageGroupCount > 1){ <a class="beginning-button pager-button button">|&lt;</a> } 
+@if(!Model.IsFirstPageGroup){ <a class="previous-group-button pager-button button">&lt;&lt;</a> } 
+@if(!Model.IsFirstPage){ <a class="previous-button pager-button button">&lt;</a> }
+
+@foreach (var pageNumber in Model.PageNumbers) {
+    if (Model.PageNumber == pageNumber) {
+        @pageNumber
+    }
+    else
+    {
+        <a class="page-button pager-button button" data-action="page" data-page-index="@(pageNumber - 1)">@pageNumber</a>
+    }
+}
+
+@if (!Model.IsLastPage) { <a class="next-button pager-button button">&gt;</a>}
+@if (!Model.IsLastPageGroup) { <a class="next-group-button pager-button button">&gt;&gt;</a> }
+@if (!Model.IsLastPage && Model.PageGroupCount > 1) { <a class="end-button pager-button button">&gt;|</a> }
