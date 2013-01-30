@@ -48,11 +48,11 @@ You can simply pass the Model used by the view as an argument to the action and 
         public ActionResult List(PostListModel model)
         {
             // get data based on pager properties
-            // - model.StartRowIndex
-            // - model.PageSize
+            // - model.Pager.StartRowIndex
+            // - model.Pager.PageSize
             
             // set the total row count after data has been retrieved
-            // - model.TotalRowCount
+            // - model.Pager.TotalRowCount
             ...
             return View(model);
         }
